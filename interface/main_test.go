@@ -16,7 +16,7 @@ func (t *testTaiyaki) SetNakami(nakami string) {
 	t.Nakami = nakami
 }
 
-func Test_main(t *testing.T) {
+func Test_makeTaiyaki(t *testing.T) {
 	tests := []struct {
 		nakami string
 	}{
