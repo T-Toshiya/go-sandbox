@@ -38,7 +38,7 @@ func NewUdon(opt Option) *Udon {
 	}
 }
 
-func main() {
+func Optional() {
 	tempuraUdon := NewUdon(Option{
 		Large, false, 2,
 	})
