@@ -11,7 +11,28 @@ func TestReadValue1(t *testing.T) {
 		args args
 		want float32
 	}{
-		// TODO: Add test cases.
+		{
+			name: "華氏の場合",
+			args: args{
+				r: SensorData{
+					SensorType: "Fahrenheit",
+					ModelID:    "ModelId",
+					Value:      10,
+				},
+			},
+			want: 50,
+		},
+		{
+			name: "摂氏の場合",
+			args: args{
+				r: SensorData{
+					SensorType: "Celsius",
+					ModelID:    "ModelId",
+					Value:      10,
+				},
+			},
+			want: 10,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -33,7 +54,24 @@ func TestSensorData_ReadValue2(t *testing.T) {
 		fields fields
 		want   float32
 	}{
-		// TODO: Add test cases.
+		{
+			name: "華氏の場合",
+			fields: fields{
+				SensorType: "Fahrenheit",
+				ModelID:    "ModelId",
+				Value:      10,
+			},
+			want: 50,
+		},
+		{
+			name: "摂氏の場合",
+			fields: fields{
+				SensorType: "Celsius",
+				ModelID:    "ModelId",
+				Value:      10,
+			},
+			want: 10,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
