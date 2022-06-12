@@ -1,4 +1,4 @@
-package main
+package receiver
 
 type SensorData struct {
 	SensorType string
