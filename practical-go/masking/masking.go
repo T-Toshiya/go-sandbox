@@ -27,9 +27,9 @@ func main() {
 	}
 
 	fmt.Println(c)
-	fmt.Println("%v\n", c)
-	fmt.Println("%+v\n", c)
-	fmt.Println("%#v\n", c)
+	fmt.Printf("%v\n", c)
+	fmt.Printf("%+v\n", c)
+	fmt.Printf("%#v\n", c)
 
 	bytes, _ := json.Marshal(c)
 	fmt.Println("JSON: ", string(bytes))
