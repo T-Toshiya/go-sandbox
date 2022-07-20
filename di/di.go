@@ -2,18 +2,49 @@ package main
 
 import (
 	"fmt"
-	"io"
-	"net/http"
 )
 
-func Greet(writer io.Writer, name string) {
-	fmt.Fprintf(writer, "Hello, %s", name)
+type Message string
+
+type Greeter struct {
+	Message Message
 }
 
-func MyGreeterHandler(w http.ResponseWriter, r *http.Request) {
-	Greet(w, "world")
+type Event struct {
+	Greeter Greeter
 }
+
+func NewMessage() Message {
+	return "Hi there!"
+}
+
+func NewGreeter(m Message) Greeter {
+	return Greeter{Message: m}
+}
+
+func NewEvent(g Greeter) Event {
+	return Event{Greeter: g}
+}
+
+func (g Greeter) Greet() Message {
+	return g.Message
+}
+
+func (e Event) Start() {
+	msg := e.Greeter.Greet()
+	fmt.Println(msg)
+}
+
+//func main() {
+//	message := NewMessage()
+//	greeter := NewGreeter(message)
+//	event := NewEvent(greeter)
+//
+//	event.Start()
+//}
 
 func main() {
-	http.ListenAndServe(":5000", http.HandlerFunc(MyGreeterHandler))
+	e := InitializeEvent()
+
+	e.Start()
 }
